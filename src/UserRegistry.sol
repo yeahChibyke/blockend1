@@ -33,6 +33,9 @@ contract UserRegistry is ERC721, Ownable {
     mapping(address => uint256) public userToNftId; // maps user to their profile NfT
     mapping(uint256 => User) private s_users; // stores user metadata
 
+    mapping(string => bool) private s_nameExists;
+    mapping(string => bool) private s_emailExists;
+
     // --->>> EVENTS
     event BecameUser(address indexed user, uint256 indexed userId, string name, string email, string image);
     event UserLeft(address indexed user, uint256 indexed userId);
@@ -64,17 +67,8 @@ contract UserRegistry is ERC721, Ownable {
     // @notice Registers the caller of the function as a user in the protocol and mints them a USDA user NFT in the process
     function becomeUser(string memory _name, string memory _email, string memory _image) external {
         require(userToNftId[msg.sender] == 0, "User profile already exists!");
-        // require(User.email == _email, "Email profile already exists!");
-        // require(User.name == _name, "Name has already been taken!");
-
-        // check if email or name or already exists
-        for (uint256 a; a <= _nextUserId; ++a) {
-            if (keccak256(bytes(s_users[a].email)) == keccak256(bytes(_email))) {
-                revert("Email profile already exists!");
-            } else if (keccak256(bytes(s_users[a].name)) == keccak256(bytes(_name))) {
-                revert("Username has already been taken!");
-            }
-        }
+        require(!s_nameExists[_name], "Username has already been taken!");
+        require(!s_emailExists[_email], "Email has already been used!!");
 
         uint256 userId = ++_nextUserId;
         _safeMint(msg.sender, userId);
@@ -83,6 +77,9 @@ contract UserRegistry is ERC721, Ownable {
         // store metadata on-chain
         s_users[userId] = User({wallet: msg.sender, name: _name, email: _email, image: _image});
         userToNftId[msg.sender] = userId;
+
+        s_nameExists[_name] = true; // Mark username as used
+        s_emailExists[_email] = true; // Mark email has used
 
         emit BecameUser(msg.sender, userId, _name, _email, _image);
     }
