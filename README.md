@@ -1,66 +1,27 @@
-## Foundry
+# UStream
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+Earn rewards for streaming.
 
-Foundry consists of:
+## About
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+UStream copies slightly from the `SoulboundProfileNFT` contract in the [DatingDapp](https://github.com/CodeHawks-Contests/2025-02-datingdapp/tree/main) codebase, with some very key modifications as fits our approach.
 
-## Documentation
+Users sign up on the UStream DApp and mint a `USDA` nft as their verified user profile.
 
-https://book.getfoundry.sh/
+*.... more README loading*
 
-## Usage
+## Contracts
 
-### Build
+- ### Creator Registry
 
-```shell
-$ forge build
-```
+Add creators to the platform
 
-### Test
+- ### User Registry
 
-```shell
-$ forge test
-```
+Add users to the platfrom
 
-### Format
+- ### Stream token
 
-```shell
-$ forge fmt
-```
+reward token of the platform
 
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+P.S. Claim token contract coming soon
