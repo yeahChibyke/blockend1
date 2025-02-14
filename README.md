@@ -1,13 +1,27 @@
-# Sample Hardhat Project
+# UStream
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a Hardhat Ignition module that deploys that contract.
+Earn rewards for streaming.
 
-Try running some of the following tasks:
+## About
 
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat ignition deploy ./ignition/modules/Lock.ts
-```
+UStream copies slightly from the `SoulboundProfileNFT` contract in the [DatingDapp](https://github.com/CodeHawks-Contests/2025-02-datingdapp/tree/main) codebase, with some very key modifications as fits our approach.
+
+Users sign up on the UStream DApp and mint a `USDA` nft as their verified user profile.
+
+*.... more README loading*
+
+## Contracts
+
+- ### Creator Registry
+
+Add creators to the platform
+
+- ### User Registry
+
+Add users to the platfrom
+
+- ### Stream token
+
+reward token of the platform
+
+P.S. Claim token contract coming soon
